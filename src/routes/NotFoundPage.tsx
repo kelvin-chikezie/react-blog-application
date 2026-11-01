@@ -1,0 +1,3 @@
+import {Link} from '@tanstack/react-router'
+import {ArrowLeft,Compass} from 'lucide-react'
+export default function NotFoundPage(){return <main className="state-page"><div className="state-icon"><Compass size={22}/></div><span className="section-kicker">404 · LOST IN THE MARGINS</span><h1>This page wandered off.</h1><p>The story you are looking for might have moved, or it may never have existed.</p><Link to="/" className="button button-dark"><ArrowLeft size={15}/> Back to Fieldnotes</Link></main>}
