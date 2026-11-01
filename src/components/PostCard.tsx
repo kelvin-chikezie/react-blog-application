@@ -1,0 +1,7 @@
+import {Link} from '@tanstack/react-router'
+import {ArrowUpRight,Clock3} from 'lucide-react'
+import type {Post} from '../lib/api'
+import {postAuthor,postDate,postExcerpt} from '../lib/api'
+const palettes=['tile-sand','tile-blue','tile-peach','tile-green','tile-lilac']
+const themes=['A good idea\nneeds room\nto breathe.','The art of\npaying\nattention.','Make space\nfor the\nunknown.','Notes from\na slower\nplace.','Small things\nshape our\ndays.']
+export function PostCard({post,index}:{post:Post;index:number}){const id=String(post.id??post.slug??index),title=post.title||'Untitled story';return <article className="post-card"><Link to="/posts/$postId" params={{postId:id}} className={`post-art ${palettes[index%palettes.length]}`}><span className="art-index">Nº {String(index+1).padStart(2,'0')}</span><span className="art-copy">{themes[index%themes.length].split('\n').map(line=><span key={line}>{line}</span>)}</span><span className="art-arrow"><ArrowUpRight size={18}/></span></Link><div className="post-meta"><span>{postDate(post)}</span><span className="meta-dot">·</span><span>{postAuthor(post)}</span></div><h2><Link to="/posts/$postId" params={{postId:id}}>{title}</Link></h2><p className="post-excerpt">{postExcerpt(post)}</p><div className="post-card-bottom"><span><Clock3 size={13}/> 4 min read</span><Link to="/posts/$postId" params={{postId:id}} className="read-link">Read story <ArrowUpRight size={14}/></Link></div></article>}
